@@ -1,21 +1,21 @@
-import React from "react";
-
 const Homepage = () => {
   return (
-    <div>
-      {" "}
-      <img
-        src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg "
-        alt=""
-        style={{ width: "100%", height: "auto" }} // Extend the image width to 100%
-      />
-      <div className="flex  mt-4 p-12 gap-8 ">
+    <div className="">
+      <div className="">
         <img
+          className="object-cover h-[500px] w-full"
+          src="https://cdn.pixabay.com/photo/2020/10/18/09/16/bedroom-5664221_1280.jpg "
+          alt=""
+        />
+      </div>
+
+      <div className="flex flex-col md:flex-row  mt-4 p-12 gap-8 ">
+        <img
+          className="object-cover h-[300px] md:h-64 w-full"
           src="https://cdn.pixabay.com/photo/2016/03/28/09/34/bedroom-1285156_1280.jpg"
           alt=""
-          style={{ width: "40%", height: "10%" }}
         />
-        <div className="flex flex-col  justify-between">
+        <div className="flex    flex-col  justify-between">
           <div className="">
             <p className="text-2xl">ABOUT US</p>
             <p>

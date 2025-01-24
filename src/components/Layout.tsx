@@ -12,7 +12,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
     <>
       {urlPath !== "/admin-panel" && <Navbar />}
 
-      <main className="container  ">{children}</main>
+      <main className="">{children}</main>
     </>
   );
 };
