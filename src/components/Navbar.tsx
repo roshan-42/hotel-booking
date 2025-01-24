@@ -12,16 +12,29 @@ const Navbar = () => {
             to="/"
             className="px-2 hover:bg-white hover:text-black py-4 transition-all ease-in "
           >
-            Home
+            HOME
           </Link>
           <Link to="/hotels" className="px-4">
-            Hotel
+            HOTEL
           </Link>
-          <Link to="/about" className="px-4">
-            About
+          <Link to="/roomtype" className="px-4">
+            ROOMTYPES
           </Link>
+          <Link to="/allrooms" className="PX-4">
+            AllROOM
+          </Link>
+
           <Link to="/contact" className="px-4">
-            Contact
+            CONTACT
+          </Link>
+          <Link to="/feedback" className="px-4">
+            FEEDBACK
+          </Link>
+          <Link to="/login" className="px-4">
+            LOGIN
+          </Link>
+          <Link to="/button" className="px-4">
+            BUTTON
           </Link>
         </div>
       </div>
