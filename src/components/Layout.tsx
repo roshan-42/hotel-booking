@@ -9,7 +9,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <>
       <Navbar />
-      <main className="container mx-auto py-8">{children}</main>
+      <main className="container ">{children}</main>
     </>
   );
 };
