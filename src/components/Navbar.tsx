@@ -14,6 +14,9 @@ const Navbar = () => {
           >
             Home
           </Link>
+          <Link to="/hotels" className="px-4">
+            Hotel
+          </Link>
           <Link to="/about" className="px-4">
             About
           </Link>
