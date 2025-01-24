@@ -6,10 +6,13 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
+  const urlPath = window.location.pathname;
+  console.log("Check url path ", urlPath);
   return (
     <>
-      <Navbar />
-      <main className="container mx-auto py-8">{children}</main>
+      {urlPath !== "/admin-panel" && <Navbar />}
+
+      <main className="container  ">{children}</main>
     </>
   );
 };
