@@ -1,5 +1,3 @@
-import React from "react";
-
 const BookingManage = () => {
   return <div>Booking manage</div>;
 };

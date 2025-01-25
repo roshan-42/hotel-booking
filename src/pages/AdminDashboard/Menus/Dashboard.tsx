@@ -1,9 +1,7 @@
-import React from "react";
 import {
   BookCheck,
   BookMarked,
   DoorOpen,
-  Eye,
   Hotel,
   ShoppingCart,
   User,
