@@ -11,7 +11,7 @@ const Navbar = () => {
       <div className="container  flex items-center justify-between">
         <img className="h-14 w-fit" src="/images/logo.png" alt="Logo" />
 
-        <div className="hidden lg:block">
+        <div className="hidden md:block">
           <Link
             to="/"
             className="px-2 hover:bg-white hover:text-black py-4 transition-all ease-in  "
@@ -41,7 +41,7 @@ const Navbar = () => {
             BUTTON
           </Link>
         </div>
-        <button onClick={() => setShowNav(!showNav)} className="flex lg:hidden">
+        <button onClick={() => setShowNav(!showNav)} className="flex md:hidden">
           <RxHamburgerMenu size={40} />
         </button>
 

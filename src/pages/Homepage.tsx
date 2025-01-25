@@ -11,7 +11,7 @@ const Homepage = () => {
 
       <div className="flex flex-col md:flex-row  mt-4 p-12 gap-8 ">
         <img
-          className="object-cover h-[300px] md:h-64 w-full"
+          className="object-cover h-[300px] md:h-28 w-full"
           src="https://cdn.pixabay.com/photo/2016/03/28/09/34/bedroom-1285156_1280.jpg"
           alt=""
         />
