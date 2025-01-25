@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { LuHotel } from "react-icons/lu";
 import {
   MdOutlineHistory,
@@ -7,60 +8,58 @@ import {
 import { SlCalender } from "react-icons/sl";
 import { TbLogout2 } from "react-icons/tb";
 
-const AdminSidebar = ({ setSelectedMenu }: any) => {
+const AdminSidebar = () => {
   return (
     <aside className="bg-gray-800 text-white w-full h-screen">
-      <div className="w-full flex items-center justify-center  h-24  ">
-        <img src="/images/logo.png" alt="" className="h-10 " />
+      <div className="w-full flex items-center justify-center h-24">
+        <img src="/images/logo.png" alt="Logo" className="h-10" />
       </div>
       <ul>
         <li className="p-4 font-thin text-gray-400">General</li>
       </ul>
-
-      <ul className=" p-4 flex flex-col gap-10">
-        <li
-          onClick={() => setSelectedMenu("dashboard")}
-          className="flex items-center  gap-2 cursor-pointer hover:underline "
-        >
-          <MdSpaceDashboard /> Dashboard
+      <ul className="p-4 flex flex-col gap-10">
+        <li className="flex items-center gap-2">
+          <MdSpaceDashboard />
+          <Link to="/admin-panel/dashboard" className="hover:underline">
+            Dashboard
+          </Link>
         </li>
-        <li
-          onClick={() => setSelectedMenu("hotel management")}
-          className="flex items-center  gap-2 cursor-pointer hover:underline "
-        >
+        <li className="flex items-center gap-2">
           <LuHotel />
-          Hotel Management
+          <Link to="/admin-panel/hotel-management" className="hover:underline">
+            Hotel Management
+          </Link>
         </li>
-        <li
-          onClick={() => setSelectedMenu("room type management")}
-          className="flex items-center  gap-2 cursor-pointer hover:underline "
-        >
-          <MdOutlineMeetingRoom /> Room Type Management
+        <li className="flex items-center gap-2">
+          <MdOutlineMeetingRoom />
+          <Link
+            to="/admin-panel/room-type-management"
+            className="hover:underline"
+          >
+            Room Type Management
+          </Link>
         </li>
-        <li
-          onClick={() => setSelectedMenu("booking management")}
-          className="flex items-center  gap-2 cursor-pointer hover:underline "
-        >
+        <li className="flex items-center gap-2">
           <SlCalender />
-          Booking Management
+          <Link
+            to="/admin-panel/booking-management"
+            className="hover:underline"
+          >
+            Booking Management
+          </Link>
         </li>
-        <li
-          onClick={() => setSelectedMenu("payment history")}
-          className="flex items-center  gap-2 cursor-pointer hover:underline "
-        >
-          {" "}
+        <li className="flex items-center gap-2">
           <MdOutlineHistory />
-          Payment History
+          <Link to="/admin-panel/payment-history" className="hover:underline">
+            Payment History
+          </Link>
         </li>
       </ul>
       <ul>
         <li className="p-4 font-thin text-gray-400">Account</li>
       </ul>
-      <ul className=" px-4 py-2 flex flex-col">
-        <li
-          onClick={() => setSelectedMenu("dashboard")}
-          className="flex items-center  gap-2 cursor-pointer hover:underline "
-        >
+      <ul className="px-4 py-2 flex flex-col">
+        <li className="flex items-center gap-2 cursor-pointer hover:underline">
           <TbLogout2 /> Logout
         </li>
       </ul>

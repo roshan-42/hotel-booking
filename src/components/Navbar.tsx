@@ -7,11 +7,11 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
   return (
-    <nav className="bg-[#344A71] text-white p-4 fixed w-full lg:relative opacity-100 ">
+    <nav className="bg-[#344A71] text-white p-4  w-full  opacity-100 ">
       <div className="container  flex items-center justify-between">
         <img className="h-14 w-fit" src="/images/logo.png" alt="Logo" />
 
-        <div className="hidden md:block">
+        <div className="hidden md:flex md:items-center  text-sm">
           <Link
             to="/"
             className="px-2 hover:bg-white hover:text-black py-4 transition-all ease-in  "

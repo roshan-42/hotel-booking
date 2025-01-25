@@ -7,12 +7,14 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const urlPath = window.location.pathname;
-  console.log("Check url path ", urlPath);
+  console.log("Check url path:", urlPath);
+
+  const isAdminPanel = urlPath.startsWith("/admin-panel");
+
   return (
     <>
-      {urlPath !== "/admin-panel" && <Navbar />}
-
-      <main className="">{children}</main>
+      {!isAdminPanel && <Navbar />}
+      <main>{children}</main>
     </>
   );
 };
