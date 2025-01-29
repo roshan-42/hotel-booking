@@ -1,4 +1,26 @@
+import { useEffect, useState } from "react";
+import api from "../utils/api";
+
+interface DataType {
+  id: number;
+  name: string;
+}
+
 const Homepage = () => {
+  const [data, setData] = useState<DataType[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await api.get("/hotels/api/hotels/");
+        setData(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
   return (
     <div className="">
       <div className="">
@@ -34,6 +56,9 @@ const Homepage = () => {
             READ MORE
           </button>
         </div>
+      </div>
+      <div>
+        <h1>API Data</h1>
       </div>
     </div>
   );

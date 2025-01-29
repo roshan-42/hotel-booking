@@ -1,21 +1,21 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-interface Hotel {
+interface RoomType {
   name: string;
   image: string;
 }
 interface RoomCardProps {
-  hotels: Hotel[];
+  roomtype: RoomType[];
 }
-const RoomCard: React.FC<RoomCardProps> = ({ hotels }) => {
+const RoomCard: React.FC<RoomCardProps> = ({ roomtype }) => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center px-4 py-8">
       <h1 className="text-3xl font-bold mb-6 text-gray-800">Rooms</h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-        {hotels.map((hotel, index) => (
+        {roomtype?.map((hotel, index) => (
           <div
             key={index}
             className="group bg-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow relative"

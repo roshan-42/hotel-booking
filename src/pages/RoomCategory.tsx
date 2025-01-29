@@ -2,20 +2,21 @@ import { useEffect, useState } from "react";
 import RoomCard from "../components/cards/RoomCard";
 import api from "../utils/api";
 import { useParams } from "react-router-dom";
+import CategoryCard from "../components/cards/CategoryCard";
 
-interface RoomType {
+interface RoomCategory {
   name: string;
   image: string;
 }
 
-const RoomType = () => {
-  const [data, setData] = useState<RoomType[]>([]);
+const RoomCategory = () => {
+  const [data, setData] = useState<RoomCategory[]>([]);
   const id = useParams().slug;
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await api.get(`/rooms/api/room-types/`);
-
+        console.log("Check rooms category", response?.data?.results);
         setData(response?.data?.results);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -48,7 +49,7 @@ const RoomType = () => {
   //   },
   // ];
 
-  return <RoomCard roomtype={data} />;
+  return <CategoryCard category={data} hotelId={id} />;
 };
 
-export default RoomType;
+export default RoomCategory;
