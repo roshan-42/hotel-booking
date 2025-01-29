@@ -22,30 +22,51 @@ const Navbar = () => {
         <div className="hidden md:flex md:items-center  text-sm">
           <Link
             to="/"
-            className="px-2 hover:bg-white hover:text-black py-4 transition-all ease-in  "
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
           >
             HOME
           </Link>
-          <Link to="/hotels" className="px-4">
+          <Link
+            to="/hotels"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             HOTEL
           </Link>
-          <Link to="/roomtype" className="px-4">
+          <Link
+            to="/roomtype"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             ROOMTYPES
           </Link>
-          <Link to="/allrooms" className="PX-4">
+          <Link
+            to="/allrooms"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             All ROOM
           </Link>
 
-          <Link to="/contact" className="px-4">
+          <Link
+            to="/contact"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             CONTACT
           </Link>
-          <Link to="/feedback" className="px-4">
+          <Link
+            to="/feedback"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             FEEDBACK
           </Link>
-          <Link to="/login" className="px-4">
+          <Link
+            to="/login"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             LOGIN
           </Link>
-          <Link to="/button" className="px-4">
+          <Link
+            to="/button"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             BUTTON
           </Link>
         </div>
@@ -61,30 +82,51 @@ const Navbar = () => {
         >
           <Link
             to="/"
-            className="px-2 hover:bg-white hover:text-black py-4 transition-all ease-in  "
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
           >
             HOME
           </Link>
-          <Link to="/hotels" className="px-4">
+          <Link
+            to="/hotels"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             HOTEL
           </Link>
-          <Link to="/roomtype" className="px-4">
+          <Link
+            to="/roomtype"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             ROOMTYPES
           </Link>
-          <Link to="/allrooms" className="PX-4">
+          <Link
+            to="/allrooms"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             All ROOM
           </Link>
 
-          <Link to="/contact" className="px-4">
+          <Link
+            to="/contact"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             CONTACT
           </Link>
-          <Link to="/feedback" className="px-4">
+          <Link
+            to="/feedback"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             FEEDBACK
           </Link>
-          <Link to="/login" className="px-4">
+          <Link
+            to="/login"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             LOGIN
           </Link>
-          <Link to="/button" className="px-4">
+          <Link
+            to="/button"
+            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+          >
             BUTTON
           </Link>
         </div>
