@@ -17,16 +17,18 @@ const Homepage = () => {
         />
         <div className="flex flex-col justify-between">
           <p className="text-4xl font-bold text-gray-800">ABOUT US</p>
-          <p className="text-2xl">Lorem Ipsum is simply dummy text</p>
+          <p className="text-2xl">
+            Experience effortless hotel bookings with our user-friendly
+            platform.
+          </p>
 
           <p>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin literature from 45 BC,
-            making it over 2000 years old. Richard McClintock, a Latin professor
-            at Hampden-Sydney College in Virginia, looked up one of the more
-            obscure Latin words, consectetur, from a Lorem Ipsum passage, and
-            going through the cites of the word in classical literature,
-            discovered the undoubtable source
+            This hotel booking app, built with React (Vite) and TypeScript,
+            offers a seamless and intuitive user experience. Designed with
+            Tailwind CSS, it provides a modern interface for browsing and
+            booking hotels. The app ensures a smooth booking process, from
+            selecting accommodations to confirming reservations, all based on a
+            well-planned Figma design.
           </p>
           <button className="border border-black w-fit p-2 mt-2">
             READ MORE

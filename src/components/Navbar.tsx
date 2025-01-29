@@ -3,13 +3,21 @@
 import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
+
+  const navigation = useNavigate();
   return (
     <nav className="bg-[#344A71] text-white p-4  w-full  opacity-100 ">
       <div className="container  flex items-center justify-between">
-        <img className="h-14 w-fit" src="/images/logo.png" alt="Logo" />
+        <img
+          onClick={() => navigation("/")}
+          className="h-14 w-fit cursor-pointer"
+          src="/images/logo.png"
+          alt="Logo"
+        />
 
         <div className="hidden md:flex md:items-center  text-sm">
           <Link
