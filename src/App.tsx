@@ -16,6 +16,8 @@ import FeedBack from "./pages/FeedBack";
 import Login from "./pages/Login";
 import Button from "./pages/Button";
 import AdminDashboardLayout from "./pages/AdminDashboard/AdminDashboardLayout";
+import HotelProfile from "./pages/HotelProfile";
+import BookHotel from "./pages/BookHotel";
 
 const App = () => {
   return (
@@ -38,6 +40,8 @@ const App = () => {
           <Route path="/allrooms" element={<AllRooms />} />
           <Route path="/login" element={<Login />} />
           <Route path="/button" element={<Button />} />
+          <Route path="/hotelprofile" element={<HotelProfile />} />
+          <Route path="/bookhotel" element={<BookHotel />} />
         </Routes>
       </Layout>
     </Router>
