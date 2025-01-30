@@ -9,6 +9,7 @@ interface RoomCardProps {
   roomtype: RoomType[];
 }
 const RoomCard: React.FC<RoomCardProps> = ({ roomtype }) => {
+  console.log("room type: ", roomtype);
   const navigate = useNavigate();
   return (
     <div className="flex flex-col items-center px-4 py-8">
@@ -38,7 +39,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ roomtype }) => {
                   View Rooms
                 </button>
                 <button
-                  onClick={() => navigate("/bookhotel")}
+                  onClick={() => navigate(`/bookhotel?room=${roomtype[0]?.id}`)}
                   className="bg-[#E7C130] hover:bg-[#d6b52e]  p-2 px-4 rounded-lg text-white cursor-pointer transition-all duration-300"
                 >
                   Book Room
