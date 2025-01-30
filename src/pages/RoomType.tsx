@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RoomCard from "../components/cards/RoomCard";
 import api from "../utils/api";
-import { useParams } from "react-router-dom";
+import { useParams, useSearchParams } from "react-router-dom";
 
 interface RoomType {
   name: string;
@@ -10,11 +10,18 @@ interface RoomType {
 
 const RoomType = () => {
   const [data, setData] = useState<RoomType[]>([]);
-  const id = useParams().slug;
+  const [searchParams] = useSearchParams();
+  const categoryId = searchParams.get("categoryId");
+  const hotelId = searchParams.get("hotelId");
+
+  console.log("Category ID:", categoryId);
+  console.log("Hotel ID:", hotelId);
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.get(`/rooms/api/room-types/`);
+        const response = await api.get(
+          `/rooms/api/rooms/?hotel=${hotelId}&room_type=${categoryId}`
+        );
 
         setData(response?.data?.results);
       } catch (error) {
@@ -25,6 +32,8 @@ const RoomType = () => {
 
     fetchData();
   }, []);
+  console.log("Check data in room types", data);
+
   // const data = [
   //   {
   //     name: "Deluxe",

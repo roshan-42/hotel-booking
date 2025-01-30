@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import RoomCard from "../components/cards/RoomCard";
 import api from "../utils/api";
 import { useParams } from "react-router-dom";
 import CategoryCard from "../components/cards/CategoryCard";
@@ -16,7 +15,6 @@ const RoomCategory = () => {
     const fetchData = async () => {
       try {
         const response = await api.get(`/rooms/api/room-types/`);
-        console.log("Check rooms category", response?.data?.results);
         setData(response?.data?.results);
       } catch (error) {
         console.error("Error fetching data:", error);

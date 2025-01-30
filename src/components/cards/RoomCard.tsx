@@ -21,7 +21,7 @@ const RoomCard: React.FC<RoomCardProps> = ({ roomtype }) => {
             className="group bg-gray-200 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow relative"
           >
             <img
-              src={hotel.image}
+              src={hotel.images[0].image}
               alt={hotel.name}
               className="h-40 w-full object-cover group-hover:opacity-10 transition-opacity duration-300"
             />

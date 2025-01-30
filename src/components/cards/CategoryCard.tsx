@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 interface Category {
   name: string;
   image: string;
+  id: any;
 }
 interface CategoryCardProps {
   category: Category[];
