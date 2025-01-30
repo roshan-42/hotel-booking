@@ -19,10 +19,14 @@ import AdminDashboardLayout from "./pages/AdminDashboard/AdminDashboardLayout";
 import HotelProfile from "./pages/HotelProfile";
 import BookHotel from "./pages/BookHotel";
 import RoomCategory from "./pages/RoomCategory";
+import Register from "./pages/Register";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   return (
     <Router>
+      <ToastContainer />
+
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -42,6 +46,7 @@ const App = () => {
 
           <Route path="/allrooms" element={<AllRooms />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
           <Route path="/button" element={<Button />} />
           <Route path="/hotelprofile/:slug" element={<HotelProfile />} />
           <Route path="/bookhotel" element={<BookHotel />} />
