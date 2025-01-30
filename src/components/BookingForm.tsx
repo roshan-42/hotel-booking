@@ -1,15 +1,44 @@
 import { useForm } from "react-hook-form";
+import useUser from "../context/useUser";
+import api from "../utils/api";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const BookingForm = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const { user } = useUser();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log("Booking Data:", data);
-    alert("Booking Successful!");
+  const onSubmit = async (data: any) => {
+    try {
+      // Get the access token (could be from localStorage, state, etc.)
+      const accessToken = user.accessToken;
+
+      // If access token is present, append it to the header
+      const response = await api.post(
+        "/bookings/api/bookings/",
+        { ...data, room: searchParams.get("room") },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      if (response.status === 201) {
+        toast.success("Room booked successfully!");
+        navigate("/");
+      } else {
+        toast.error("Room booking failed, please try again!");
+      }
+    } catch (error) {
+      toast.error("An error occurred. Please try again.");
+    }
   };
 
   return (
@@ -19,7 +48,7 @@ const BookingForm = () => {
 
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           {/* Guest Name */}
-          <div>
+          {/* <div>
             <label className="block font-medium">Full Name</label>
             <input
               type="text"
@@ -31,7 +60,7 @@ const BookingForm = () => {
             )}
           </div>
 
-          {/* Email */}
+        
           <div>
             <label className="block font-medium">Email</label>
             <input
@@ -44,7 +73,7 @@ const BookingForm = () => {
             )}
           </div>
 
-          {/* Phone */}
+         
           <div>
             <label className="block font-medium">Phone Number</label>
             <input
@@ -55,10 +84,10 @@ const BookingForm = () => {
             {errors.phone && (
               <p className="text-red-500 text-sm">{errors.phone.message}</p>
             )}
-          </div>
+          </div> */}
 
           {/* Room Type */}
-          <div>
+          {/* <div>
             <label className="block font-medium">Room Type</label>
             <select
               {...register("roomType", { required: "Select a room type" })}
@@ -72,7 +101,7 @@ const BookingForm = () => {
             {errors.roomType && (
               <p className="text-red-500 text-sm">{errors.roomType.message}</p>
             )}
-          </div>
+          </div> */}
 
           {/* Check-in & Check-out */}
           <div className="grid grid-cols-2 gap-4">
@@ -80,34 +109,36 @@ const BookingForm = () => {
               <label className="block font-medium">Check-in</label>
               <input
                 type="date"
-                {...register("checkIn", {
+                {...register("check_in_date", {
                   required: "Check-in date is required",
                 })}
                 className="w-full p-2 border rounded"
               />
-              {errors.checkIn && (
-                <p className="text-red-500 text-sm">{errors.checkIn.message}</p>
+              {errors.check_in_date && (
+                <p className="text-red-500 text-sm">
+                  {errors.check_in_date.message}
+                </p>
               )}
             </div>
             <div>
               <label className="block font-medium">Check-out</label>
               <input
                 type="date"
-                {...register("checkOut", {
+                {...register("check_out_date", {
                   required: "Check-out date is required",
                 })}
                 className="w-full p-2 border rounded"
               />
-              {errors.checkOut && (
+              {errors.check_out_date && (
                 <p className="text-red-500 text-sm">
-                  {errors.checkOut.message}
+                  {errors.check_out_date.message}
                 </p>
               )}
             </div>
           </div>
 
           {/* Payment Method */}
-          <div>
+          {/* <div>
             <label className="block font-medium">Payment Method</label>
             <select
               {...register("paymentMethod", {
@@ -125,7 +156,7 @@ const BookingForm = () => {
                 {errors.paymentMethod.message}
               </p>
             )}
-          </div>
+          </div> */}
 
           {/* Submit */}
           <button

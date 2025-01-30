@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import api from "../utils/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import useUser from "../context/useUser";
+import UserContext from "../context/UserContext";
 
 export default function Login() {
+  const { loginUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -27,12 +30,22 @@ export default function Login() {
         email: email,
         password: password,
       });
-      setApiError(null);
-      setEmail("");
-      setPassword("");
-      // alert("Login successful!");
-      toast.success("Logged in successfully");
-      navigate("/");
+      if (response.status === 200 && response.data.status) {
+        const { user, access } = response.data.data;
+        const userData = {
+          firstName: user.first_name,
+          lastName: user.last_name,
+          email: user.email,
+          accessToken: access,
+        };
+
+        // Store user data in context
+        loginUser(userData);
+
+        setApiError(null);
+        toast.success(`Welcome, ${user.first_name} ${user.last_name}!`);
+        navigate("/");
+      }
     } catch (error) {
       setApiError(error.message);
     }

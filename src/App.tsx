@@ -21,38 +21,41 @@ import BookHotel from "./pages/BookHotel";
 import RoomCategory from "./pages/RoomCategory";
 import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
+import UserProvider from "./context/UserProvider";
 
 const App = () => {
   return (
-    <Router>
-      <ToastContainer />
+    <UserProvider>
+      <Router>
+        <ToastContainer />
 
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/feedback" element={<FeedBack />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route
-            path="/admin-panel"
-            element={<Navigate to="/admin-panel/dashboard" />}
-          />
-          <Route
-            path="/admin-panel/:menuSlug"
-            element={<AdminDashboardLayout />}
-          />
-          <Route path="/hotels" element={<Hotels />} />
-          <Route path="/roomtype" element={<RoomType />} />
-          <Route path="/categorytype/:slug" element={<RoomCategory />} />
+        <Layout>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/feedback" element={<FeedBack />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route
+              path="/admin-panel"
+              element={<Navigate to="/admin-panel/dashboard" />}
+            />
+            <Route
+              path="/admin-panel/:menuSlug"
+              element={<AdminDashboardLayout />}
+            />
+            <Route path="/hotels" element={<Hotels />} />
+            <Route path="/roomtype" element={<RoomType />} />
+            <Route path="/categorytype/:slug" element={<RoomCategory />} />
 
-          <Route path="/allrooms" element={<AllRooms />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/button" element={<Button />} />
-          <Route path="/hotelprofile/:slug" element={<HotelProfile />} />
-          <Route path="/bookhotel" element={<BookHotel />} />
-        </Routes>
-      </Layout>
-    </Router>
+            <Route path="/allrooms" element={<AllRooms />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+            <Route path="/button" element={<Button />} />
+            <Route path="/hotelprofile/:slug" element={<HotelProfile />} />
+            <Route path="/bookhotel" element={<BookHotel />} />
+          </Routes>
+        </Layout>
+      </Router>
+    </UserProvider>
   );
 };
 

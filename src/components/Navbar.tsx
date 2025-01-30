@@ -4,9 +4,12 @@ import { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import useUser from "../context/useUser";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
+  const { user, logoutUser } = useUser();
 
   const navigation = useNavigate();
   return (
@@ -57,18 +60,34 @@ const Navbar = () => {
           >
             FEEDBACK
           </Link>
-          <Link
-            to="/login"
-            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
-          >
-            LOGIN
-          </Link>
-          <Link
-            to="/button"
-            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
-          >
-            BUTTON
-          </Link>
+          {user?.accessToken ? (
+            <div
+              onClick={() => {
+                logoutUser();
+                navigation("/");
+                toast.success("Logged out successfully");
+              }}
+              className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  cursor-pointer"
+            >
+              LOGOUT
+            </div>
+          ) : (
+            <Link
+              to="/login"
+              className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+            >
+              LOGIN
+            </Link>
+          )}
+
+          {!user?.accessToken && (
+            <Link
+              to="/register"
+              className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+            >
+              REGISTER
+            </Link>
+          )}
         </div>
         <button onClick={() => setShowNav(!showNav)} className="flex md:hidden">
           <RxHamburgerMenu size={40} />
@@ -117,12 +136,21 @@ const Navbar = () => {
           >
             FEEDBACK
           </Link>
-          <Link
-            to="/login"
-            className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
-          >
-            LOGIN
-          </Link>
+          {user?.accessToken ? (
+            <Link
+              to="/logout"
+              className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+            >
+              LOGOUT
+            </Link>
+          ) : (
+            <Link
+              to="/login"
+              className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+            >
+              LOGIN
+            </Link>
+          )}
           <Link
             to="/button"
             className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
