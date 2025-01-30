@@ -5,7 +5,7 @@ import Dashboard from "./Menus/Dashboard";
 import HotelManage from "./Menus/HotelManage";
 import RoomTypeManage from "./Menus/RoomTypeManage";
 import BookingManage from "./Menus/BookingManage";
-import PaymentHistories from "./Menus/PaymentHistories";
+import PaymentHistories from "./Menus/PaymentHistory";
 
 const AdminDashboardLayout = () => {
   const { menuSlug } = useParams();
