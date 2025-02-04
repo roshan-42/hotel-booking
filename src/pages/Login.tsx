@@ -2,14 +2,16 @@ import { useContext, useState } from "react";
 import api from "../utils/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import useUser from "../context/useUser";
 import UserContext from "../context/UserContext";
+
+import { Eye, EyeOff } from "lucide-react";
 
 export default function Login() {
   const { loginUser } = useContext(UserContext);
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState({});
   const [apiError, setApiError] = useState(null);
 
@@ -71,18 +73,24 @@ export default function Login() {
               <p className="text-red-500 text-sm">{errors.email}</p>
             )}
           </div>
-          <div className="mb-4">
+          <div className="mb-4 relative">
             <label className="text-white block mb-2">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full p-2 rounded-lg focus:outline-none bg-white"
-              placeholder="Enter your password"
-            />
-            {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password}</p>
-            )}
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="w-full p-2 rounded-lg focus:outline-none bg-white pr-10"
+                placeholder="Enter your password"
+              />
+              <button
+                type="button"
+                onClick={() => setShowPassword((prev) => !prev)}
+                className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
           {apiError && (
             <p className="text-red-500 text-sm mb-2">

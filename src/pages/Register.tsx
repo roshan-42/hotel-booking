@@ -3,7 +3,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
+import { Eye, EyeOff } from "lucide-react";
 interface FormData {
   first_name: string;
   last_name: string;
@@ -26,6 +26,7 @@ interface ApiResponse {
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     first_name: "",
@@ -252,22 +253,6 @@ const Register: React.FC = () => {
                 <p className="text-red-300 text-sm mt-1">{errors.city}</p>
               )}
             </div>
-
-            <div className="space-y-1">
-              <label className="block text-white">Password</label>
-              <input
-                type="password"
-                name="password"
-                value={formData.password}
-                onChange={handleInputChange}
-                placeholder="Enter your password"
-                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
-                required
-              />
-              {errors.password && (
-                <p className="text-red-300 text-sm mt-1">{errors.password}</p>
-              )}
-            </div>
             {/* Gender Dropdown */}
             <div className="space-y-1">
               <label className="block text-white">Gender</label>
@@ -290,17 +275,50 @@ const Register: React.FC = () => {
               )}
             </div>
 
-            <div className="space-y-1">
+            <div className="space-y-1 relative">
+              <label className="block text-white">Password</label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-2 rounded-full text-gray-800 bg-white pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+              {errors.password && (
+                <p className="text-red-300 text-sm mt-1">{errors.password}</p>
+              )}
+            </div>
+            <div className="space-y-1 relative">
               <label className="block text-white">Confirm Password</label>
-              <input
-                type="password"
-                name="password2"
-                value={formData.password2}
-                onChange={handleInputChange}
-                placeholder="Confirm your password"
-                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password2"
+                  value={formData.password2}
+                  onChange={handleInputChange}
+                  placeholder="Enter your password again"
+                  className="w-full px-4 py-2 rounded-full text-gray-800 bg-white pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {errors.password2 && (
                 <p className="text-red-300 text-sm mt-1">{errors.password2}</p>
               )}
