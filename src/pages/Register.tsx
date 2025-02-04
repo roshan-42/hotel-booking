@@ -2,6 +2,7 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 interface FormData {
   first_name: string;
@@ -103,7 +104,7 @@ const Register: React.FC = () => {
         password2: "",
       });
       navigate("/login");
-      alert("Account created successfully!");
+      toast.success("Account created successfully!");
     } catch (error: any) {
       // Handle different types of errors
       if (error.response?.data?.error) {

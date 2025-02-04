@@ -48,6 +48,7 @@ export default function Login() {
       }
     } catch (error) {
       setApiError(error.message);
+      toast.error("Invalid Credentials !");
     }
   };
 
@@ -82,7 +83,13 @@ export default function Login() {
               <p className="text-red-500 text-sm">{errors.password}</p>
             )}
           </div>
-          {apiError && <p className="text-red-500 text-sm mb-2">{apiError}</p>}
+          {apiError && (
+            <p className="text-red-500 text-sm mb-2">
+              {apiError
+                ? "Invalid Credentials, Check your email and password before loggin in."
+                : ""}
+            </p>
+          )}
           <button
             type="submit"
             className="w-full bg-yellow-400 p-2 rounded-lg font-bold hover:bg-yellow-500 transition"

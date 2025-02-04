@@ -52,20 +52,25 @@ const AdminDashboardLayout = () => {
       )}
 
       {/* Sidebar for small screens */}
-      {isSidebarOpen && (
-        <div className="fixed inset-0  z-40 md:hidden">
-          <div className="w-4/6 bg-white h-full  relative">
-            {/* Close button */}
-            <button
-              className="absolute top-4 right-4 bg-white rounded text-gray-800"
-              onClick={() => setIsSidebarOpen(false)}
-            >
-              <FiX size={24} />
-            </button>
+
+      <div className={`fixed inset-0  z-40 md:hidden transition-all`}>
+        <div
+          className={`h-full bg-white relative transition-all duration-300 ${
+            isSidebarOpen ? "w-4/6" : "w-1"
+          }`}
+        >
+          {/* Close button */}
+          <button
+            className="absolute top-4 right-4 bg-white rounded text-gray-800 transition-all"
+            onClick={() => setIsSidebarOpen(false)}
+          >
+            <FiX size={24} />
+          </button>
+          <div className={`${isSidebarOpen ? "block" : "hidden"}`}>
             <AdminSidebar />
           </div>
         </div>
-      )}
+      </div>
 
       {/* Main content */}
       <div className="w-full md:w-5/6">{renderMenu()}</div>

@@ -89,7 +89,10 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-        <button onClick={() => setShowNav(!showNav)} className="flex md:hidden">
+        <button
+          onClick={() => setShowNav(!showNav)}
+          className="z-50 flex md:hidden cursor-pointer"
+        >
           <RxHamburgerMenu size={40} />
         </button>
 
@@ -97,7 +100,7 @@ const Navbar = () => {
           onScroll={() => setShowNav(false)}
           className={`lg:hidden fixed ${
             showNav ? "top-16 opacity-80" : "-top-[600px] opacity-0 "
-          } transition-all ease-in duration-600 right-0 px-5 bg-[#344A71] flex flex-col items-center gap-10 py-4`}
+          } transition-all ease-in duration-300 right-0 px-5 bg-[#344A71] flex flex-col items-center gap-10 py-4`}
         >
           <Link
             to="/"
