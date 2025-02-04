@@ -6,10 +6,14 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import useUser from "../context/useUser";
 import { toast } from "react-toastify";
+import { useRole } from "../context/useRole";
 
 const Navbar = () => {
   const [showNav, setShowNav] = useState(false);
   const { user, logoutUser } = useUser();
+
+  const role = useRole();
+  console.log("check what is in role", role);
 
   const navigation = useNavigate();
   return (

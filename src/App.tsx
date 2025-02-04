@@ -22,6 +22,7 @@ import RoomCategory from "./pages/RoomCategory";
 import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
 import UserProvider from "./context/UserProvider";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const App = () => {
   return (
@@ -34,14 +35,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/feedback" element={<FeedBack />} />
             <Route path="/contact" element={<Contact />} />
-            <Route
-              path="/admin-panel"
-              element={<Navigate to="/admin-panel/dashboard" />}
-            />
-            <Route
-              path="/admin-panel/:menuSlug"
-              element={<AdminDashboardLayout />}
-            />
+
             <Route path="/hotels" element={<Hotels />} />
             <Route path="/roomtype" element={<RoomType />} />
             <Route path="/categorytype/:slug" element={<RoomCategory />} />
@@ -52,6 +46,17 @@ const App = () => {
             <Route path="/button" element={<Button />} />
             <Route path="/hotelprofile/:slug" element={<HotelProfile />} />
             <Route path="/bookhotel" element={<BookHotel />} />
+            {/* Admin Protected Routes */}
+            <Route element={<ProtectedRoute />}>
+              <Route
+                path="/admin-panel"
+                element={<Navigate to="/admin-panel/dashboard" />}
+              />
+              <Route
+                path="/admin-panel/:menuSlug"
+                element={<AdminDashboardLayout />}
+              />
+            </Route>
           </Routes>
         </Layout>
       </Router>

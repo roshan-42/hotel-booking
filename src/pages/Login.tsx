@@ -36,6 +36,7 @@ export default function Login() {
           firstName: user.first_name,
           lastName: user.last_name,
           email: user.email,
+          role: user.role,
           accessToken: access,
         };
 
