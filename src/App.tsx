@@ -23,6 +23,9 @@ import Register from "./pages/Register";
 import { ToastContainer } from "react-toastify";
 import UserProvider from "./context/UserProvider";
 import ProtectedRoute from "./components/ProtectedRoute";
+import UserProfile from "./pages/UserProfile";
+import api from "./utils/api";
+import { useEffect } from "react";
 
 const App = () => {
   return (
@@ -41,6 +44,8 @@ const App = () => {
             <Route path="/categorytype/:slug" element={<RoomCategory />} />
 
             <Route path="/allrooms" element={<AllRooms />} />
+            <Route path="/profile" element={<UserProfile />} />
+
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/button" element={<Button />} />

@@ -8,6 +8,10 @@ interface FormData {
   first_name: string;
   last_name: string;
   email: string;
+  address: string;
+  country: string;
+  city: string;
+  gender: string;
   password: string;
   password2: string;
 }
@@ -27,6 +31,10 @@ const Register: React.FC = () => {
     first_name: "",
     last_name: "",
     email: "",
+    address: "",
+    country: "",
+    city: "",
+    gender: "",
     password: "",
     password2: "",
   });
@@ -99,7 +107,11 @@ const Register: React.FC = () => {
       setFormData({
         first_name: "",
         last_name: "",
+        address: "",
+        country: "",
+        city: "",
         email: "",
+        gender: "",
         password: "",
         password2: "",
       });
@@ -195,6 +207,51 @@ const Register: React.FC = () => {
                 <p className="text-red-300 text-sm mt-1">{errors.email}</p>
               )}
             </div>
+            <div className="space-y-1">
+              <label className="block text-white">Address</label>
+              <input
+                type="address"
+                name="address"
+                value={formData.address}
+                onChange={handleInputChange}
+                placeholder="Enter your address"
+                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
+                required
+              />
+              {errors.address && (
+                <p className="text-red-300 text-sm mt-1">{errors.address}</p>
+              )}
+            </div>
+            <div className="space-y-1">
+              <label className="block text-white">Country</label>
+              <input
+                type="country"
+                name="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                placeholder="Enter your country"
+                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
+                required
+              />
+              {errors.country && (
+                <p className="text-red-300 text-sm mt-1">{errors.country}</p>
+              )}
+            </div>
+            <div className="space-y-1">
+              <label className="block text-white">City</label>
+              <input
+                type="city"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                placeholder="Enter your city"
+                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
+                required
+              />
+              {errors.city && (
+                <p className="text-red-300 text-sm mt-1">{errors.city}</p>
+              )}
+            </div>
 
             <div className="space-y-1">
               <label className="block text-white">Password</label>
@@ -209,6 +266,27 @@ const Register: React.FC = () => {
               />
               {errors.password && (
                 <p className="text-red-300 text-sm mt-1">{errors.password}</p>
+              )}
+            </div>
+            {/* Gender Dropdown */}
+            <div className="space-y-1">
+              <label className="block text-white">Gender</label>
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
+                required
+              >
+                <option value="" disabled>
+                  Select your gender
+                </option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Other</option>
+              </select>
+              {errors.gender && (
+                <p className="text-red-300 text-sm mt-1">{errors.gender}</p>
               )}
             </div>
 
