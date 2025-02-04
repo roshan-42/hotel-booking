@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -7,6 +7,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
+import api from "../../../utils/api";
+import { Drawer } from "@mui/material";
+import AddHotel from "./AddHotel";
 
 const initialHotels = [
   { id: 1, name: "Grand Plaza Hotel" },
@@ -16,6 +19,7 @@ const initialHotels = [
 
 export default function HotelManage() {
   const [hotels, setHotels] = useState(initialHotels);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const handleDelete = (id: number) => {
     setHotels(hotels.filter((hotel) => hotel.id !== id));
@@ -26,12 +30,25 @@ export default function HotelManage() {
   };
 
   const handleAddHotel = () => {
-    const newHotel = {
-      id: hotels.length + 1,
-      name: `New Hotel ${hotels.length + 1}`,
-    };
-    setHotels([...hotels, newHotel]);
+    setDrawerOpen(true); // Open the Drawer when Add Hotel button is clicked
   };
+
+  const closeDrawer = () => {
+    setDrawerOpen(false); // Close the Drawer
+  };
+
+  const getHotels = async () => {
+    try {
+      const response = await api.get("/hotels/api/admin/hotels/");
+      console.log("Check list of hotels", response?.data?.results);
+      setHotels(response?.data?.results);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    getHotels();
+  }, []);
 
   return (
     <div className="p-4 w-full">
@@ -59,7 +76,9 @@ export default function HotelManage() {
               {hotels.map((hotel, index) => (
                 <TableRow key={hotel.id}>
                   <TableCell>{index + 1}</TableCell>
-                  <TableCell align="right">{hotel.name}</TableCell>
+                  <TableCell className="text-start" align="right">
+                    {hotel.name}
+                  </TableCell>
                   <TableCell align="right">
                     <button
                       onClick={() => handleEdit(hotel.id)}
@@ -79,6 +98,10 @@ export default function HotelManage() {
             </TableBody>
           </Table>
         </TableContainer>
+        {/* Drawer for AddHotel */}
+        <Drawer anchor="right" open={drawerOpen} onClose={closeDrawer}>
+          <AddHotel onClose={closeDrawer} />
+        </Drawer>
       </div>
     </div>
   );
