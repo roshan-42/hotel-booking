@@ -89,13 +89,13 @@ const Navbar = () => {
             </Link>
           )}
         </div>
-        <button onClick={() => setShowNav(!showNav)} className="flex md:hidden">
+        <button onClick={() => setShowNav(!showNav)} className="flex z-[1000] md:hidden">
           <RxHamburgerMenu size={40} />
         </button>
 
         <div
           onScroll={() => setShowNav(false)}
-          className={`lg:hidden fixed ${
+          className={`md:hidden fixed z-50 ${
             showNav ? "top-16 opacity-80" : "-top-[600px] opacity-0 "
           } transition-all ease-in duration-600 right-0 px-5 bg-[#344A71] flex flex-col items-center gap-10 py-4`}
         >
@@ -137,12 +137,17 @@ const Navbar = () => {
             FEEDBACK
           </Link>
           {user?.accessToken ? (
-            <Link
-              to="/logout"
-              className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  "
+            <div
+              onClick={() => {
+                logoutUser();
+                navigation("/");
+                setShowNav(false);
+                toast.success("Logged out successfully");
+              }}
+              className="px-2 hover:bg-[#FDE55B] hover:text-black py-4 transition-all ease-in  cursor-pointer"
             >
               LOGOUT
-            </Link>
+            </div>
           ) : (
             <Link
               to="/login"

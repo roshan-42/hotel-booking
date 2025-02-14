@@ -37,7 +37,7 @@ const BookingForm = () => {
         toast.error("Room booking failed, please try again!");
       }
     } catch (error) {
-      toast.error("An error occurred. Please try again.");
+      toast.error("You must login first before booking !");
     }
   };
 
