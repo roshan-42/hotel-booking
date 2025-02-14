@@ -7,19 +7,22 @@ import {
   User,
   Users,
 } from "lucide-react"; // Example for icons
+import api from "../../../utils/api";
+import { useEffect, useState } from "react";
 
 const Dashboard = () => {
+  const [stats, setStats] = useState();
   const cards = [
     {
       icon: <Hotel className="text-blue-500" size={24} />,
-      value: "200",
+      value: stats?.total_no_of_hotels,
       label: "Total Hotels",
       percentage: "0.43%",
       isPositive: true,
     },
     {
       icon: <DoorOpen className="text-blue-500" size={24} />,
-      value: "100",
+      value: stats?.total_no_of_rooms,
       label: "Total Rooms",
       percentage: "9.35%",
       isPositive: true,
@@ -27,7 +30,8 @@ const Dashboard = () => {
 
     {
       icon: <BookCheck className="text-blue-500" size={24} />,
-      value: "3.456",
+      value: stats?.total_booked_room,
+
       label: "Booked Rooms",
       percentage: "0.95%",
       isPositive: false,
@@ -41,7 +45,8 @@ const Dashboard = () => {
     },
     {
       icon: <BookMarked className="text-blue-500" size={24} />,
-      value: "20",
+      value: stats?.new_booking_today,
+
       label: "Today Bookings",
       percentage: "5.85%",
       isPositive: true,
@@ -53,14 +58,27 @@ const Dashboard = () => {
       percentage: "1.35%",
       isPositive: true,
     },
-    {
-      icon: <ShoppingCart className="text-blue-500" size={24} />,
-      value: "$45.2K",
-      label: "Total Profit",
-      percentage: "2.33%",
-      isPositive: true,
-    },
+    // {
+    //   icon: <ShoppingCart className="text-blue-500" size={24} />,
+    //   value: "$45.2K",
+    //   label: "Total Profit",
+    //   percentage: "2.33%",
+    //   isPositive: true,
+    // },
   ];
+
+  const fetchInfo = async () => {
+    try {
+      const response = await api.get("/dashboard/api/stats/");
+      console.log("Check response", response?.data?.data);
+      setStats(response?.data?.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    fetchInfo();
+  }, []);
 
   return (
     <div>

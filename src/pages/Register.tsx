@@ -2,11 +2,16 @@ import React, { useState, ChangeEvent, FormEvent } from "react";
 // import { Alert, AlertDescription } from "@/components/ui/alert";
 import api from "../utils/api";
 import { useNavigate } from "react-router-dom";
-
+import { toast } from "react-toastify";
+import { Eye, EyeOff } from "lucide-react";
 interface FormData {
   first_name: string;
   last_name: string;
   email: string;
+  address: string;
+  country: string;
+  city: string;
+  gender: string;
   password: string;
   password2: string;
 }
@@ -21,11 +26,16 @@ interface ApiResponse {
 
 const Register: React.FC = () => {
   const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
     first_name: "",
     last_name: "",
     email: "",
+    address: "",
+    country: "",
+    city: "",
+    gender: "",
     password: "",
     password2: "",
   });
@@ -98,12 +108,16 @@ const Register: React.FC = () => {
       setFormData({
         first_name: "",
         last_name: "",
+        address: "",
+        country: "",
+        city: "",
         email: "",
+        gender: "",
         password: "",
         password2: "",
       });
       navigate("/login");
-      alert("Account created successfully!");
+      toast.success("Account created successfully!");
     } catch (error: any) {
       // Handle different types of errors
       if (error.response?.data?.error) {
@@ -194,34 +208,117 @@ const Register: React.FC = () => {
                 <p className="text-red-300 text-sm mt-1">{errors.email}</p>
               )}
             </div>
-
             <div className="space-y-1">
-              <label className="block text-white">Password</label>
+              <label className="block text-white">Address</label>
               <input
-                type="password"
-                name="password"
-                value={formData.password}
+                type="address"
+                name="address"
+                value={formData.address}
                 onChange={handleInputChange}
-                placeholder="Enter your password"
+                placeholder="Enter your address"
                 className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
                 required
               />
+              {errors.address && (
+                <p className="text-red-300 text-sm mt-1">{errors.address}</p>
+              )}
+            </div>
+            <div className="space-y-1">
+              <label className="block text-white">Country</label>
+              <input
+                type="country"
+                name="country"
+                value={formData.country}
+                onChange={handleInputChange}
+                placeholder="Enter your country"
+                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
+                required
+              />
+              {errors.country && (
+                <p className="text-red-300 text-sm mt-1">{errors.country}</p>
+              )}
+            </div>
+            <div className="space-y-1">
+              <label className="block text-white">City</label>
+              <input
+                type="city"
+                name="city"
+                value={formData.city}
+                onChange={handleInputChange}
+                placeholder="Enter your city"
+                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
+                required
+              />
+              {errors.city && (
+                <p className="text-red-300 text-sm mt-1">{errors.city}</p>
+              )}
+            </div>
+            {/* Gender Dropdown */}
+            <div className="space-y-1">
+              <label className="block text-white">Gender</label>
+              <select
+                name="gender"
+                value={formData.gender}
+                onChange={handleInputChange}
+                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
+                required
+              >
+                <option value="" disabled>
+                  Select your gender
+                </option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="others">Other</option>
+              </select>
+              {errors.gender && (
+                <p className="text-red-300 text-sm mt-1">{errors.gender}</p>
+              )}
+            </div>
+
+            <div className="space-y-1 relative">
+              <label className="block text-white">Password</label>
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  value={formData.password}
+                  onChange={handleInputChange}
+                  placeholder="Enter your password"
+                  className="w-full px-4 py-2 rounded-full text-gray-800 bg-white pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {errors.password && (
                 <p className="text-red-300 text-sm mt-1">{errors.password}</p>
               )}
             </div>
-
-            <div className="space-y-1">
+            <div className="space-y-1 relative">
               <label className="block text-white">Confirm Password</label>
-              <input
-                type="password"
-                name="password2"
-                value={formData.password2}
-                onChange={handleInputChange}
-                placeholder="Confirm your password"
-                className="w-full px-4 py-2 rounded-full text-gray-800 bg-white"
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password2"
+                  value={formData.password2}
+                  onChange={handleInputChange}
+                  placeholder="Enter your password again"
+                  className="w-full px-4 py-2 rounded-full text-gray-800 bg-white pr-10"
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500"
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
               {errors.password2 && (
                 <p className="text-red-300 text-sm mt-1">{errors.password2}</p>
               )}

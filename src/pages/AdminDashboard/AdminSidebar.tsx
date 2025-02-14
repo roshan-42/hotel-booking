@@ -7,11 +7,16 @@ import {
 } from "react-icons/md";
 import { SlCalender } from "react-icons/sl";
 import { TbLogout2 } from "react-icons/tb";
+import { useNavigate } from "react-router-dom";
 
 const AdminSidebar = () => {
+  const navigate = useNavigate();
   return (
     <aside className="bg-gray-800 text-white w-full h-screen">
-      <div className="w-full flex items-center justify-center h-24">
+      <div
+        onClick={() => navigate("/")}
+        className="w-full flex items-center justify-center h-24 cursor-pointer"
+      >
         <img src="/images/logo.png" alt="Logo" className="h-10" />
       </div>
       <ul>

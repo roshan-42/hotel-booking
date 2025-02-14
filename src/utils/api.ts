@@ -9,4 +9,17 @@ const api = axios.create({
   },
 });
 
+// Request Interceptor to automatically add Authorization header
+api.interceptors.request.use(
+  (config) => {
+    const user = localStorage.getItem("user"); // or get it from your state management
+    const token = user ? JSON.parse(user) : null;
+    if (token) {
+      config.headers.Authorization = `Bearer ${token.accessToken}`;
+    }
+    return config;
+  },
+  (error) => Promise.reject(error)
+);
+
 export default api;
